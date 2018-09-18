@@ -24,28 +24,45 @@ def movement(user_input, x, y):
 
 def instructions(x, y):
     if x == 1 and y == 1:
-        directions = "(N)orth"
+        directions1 = "(N)orth"
     elif x == 1 and y == 2:
-        directions = "(N)orth or (E)ast or (S)outh"
+        directions1 = "(N)orth or (E)ast or (S)outh"
     elif x == 1 and y == 3:
-        directions = "(E)ast or (S)outh"
+        directions1 = "(E)ast or (S)outh"
     elif x == 2 and y == 1:
-        directions = "(N)orth"
+        directions1 = "(N)orth"
     elif x == 2 and y == 2:
-        directions = "(W)est or (S)outh"
+        directions1 = "(W)est or (S)outh"
     elif x == 2 and y == 3:
-        directions = "(W)est or (E)ast"
+        directions1 = "(W)est or (E)ast"
     elif x == 3 and y == 3: 
-        directions = "(E)ast or (S)outh"
+        directions1 = "(W)est or (S)outh"
     elif x == 3 and y == 2:
-        directions = "(N)orth or (S)outh"
+        directions1 = "(N)orth or (S)outh"
     elif x == 3 and y == 1:
         print("Victory!")
         return True
-    print("You can travel:", directions)
+    print("You can travel:", directions1)
 
-
-
+def legal_moves(x, y, user_input):
+    if x == 2 and y == 2 and (user_input == "n" or user_input == "e"):
+        print("Invalid direction!")
+    elif (x == 1 and y == 1) and (user_input != "n"):
+        print("Invalid direction!")
+    elif (x == 1 and y == 2) and (user_input == "w"):
+        print("Invalid direction")
+    elif (x == 1 and y == 3) and (user_input == "n" or user_input == "w"):
+        print("Invalid direction")
+    elif (x == 2 and y == 1) and ( user_input != "n"):
+        print("Invalid direction")
+    elif (x == 2 and y == 3) and (user_input == "n" or user_input == "s"):
+        print("Invalid direction")
+    elif (x==3 and y == 3) and (user_input == "n" or user_input == "e"):
+        print("Invaild direction")
+    elif (x == 3 and y == 2) and (user_input == "w" or user_input == "e"):
+        print("Invalid direction")
+    else:
+        return False
 
     
 
@@ -56,16 +73,22 @@ while (x != 3 and y != 1) or (x < 4 and y < 4) :
         break
     user_input = input("Direction: ").lower()
     the_movement = movement(user_input, x, y)
-    if (user_input == "w" or user_input == "e") and the_movement != 0 :   #Villa í boolean
-        x += the_movement
-    elif (user_input == "n" or user_input == "s") and the_movement != 0:
-        y += the_movement
-    elif the_movement == 0:
-        print("Invalid direction!")
+    if legal_moves(x, y, user_input) != False:
         continue
     else:
-        print("Not a valid direction!")
-        continue
+        if (user_input == "w" or user_input == "e") and the_movement != 0 :   #Villa í boolean
+            if user_input == "w":
+                x -= 1
+            else:
+                x += 1
+        elif (user_input == "n" or user_input == "s") and the_movement != 0:
+            if user_input == "n":
+                y += 1
+            else:
+                y -= 1
+        
+        elif the_movement == 0:
+            continue
     
 
 
