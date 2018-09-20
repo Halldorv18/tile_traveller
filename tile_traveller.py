@@ -4,7 +4,7 @@
 #"Invalid direction" is printed when user inputs an direction that is not allowed or invalid.
 #Instructions to winning the maze: (3x3 tiles) 1,1 -- > 1,2 ; 1,2 --> 1,3 or 2,2 or 1,1 ; 1,3 --> 2,3 or 2,2; 2,3 --> 3,3; 3,3 --> 3,2; 3,2 --> 3,1 (Victory tile).
 #User can always backtrack, unless he has gotten to the victory tile. 
-
+#Github-id: https://github.com/Halldorv18/tile_traveller
 
 
 def movement(user_input, x, y):
@@ -24,43 +24,43 @@ def movement(user_input, x, y):
 
 def instructions(x, y):
     if x == 1 and y == 1:
-        directions1 = "(N)orth"
+        directions1 = "(N)orth."
     elif x == 1 and y == 2:
-        directions1 = "(N)orth or (E)ast or (S)outh"
+        directions1 = "(N)orth or (E)ast or (S)outh."
     elif x == 1 and y == 3:
-        directions1 = "(E)ast or (S)outh"
+        directions1 = "(E)ast or (S)outh."
     elif x == 2 and y == 1:
         directions1 = "(N)orth"
     elif x == 2 and y == 2:
-        directions1 = "(W)est or (S)outh"
+        directions1 = "(W)est or (S)outh."
     elif x == 2 and y == 3:
-        directions1 = "(W)est or (E)ast"
+        directions1 = "(W)est or (E)ast."
     elif x == 3 and y == 3: 
-        directions1 = "(W)est or (S)outh"
+        directions1 = "(W)est or (S)outh."
     elif x == 3 and y == 2:
-        directions1 = "(N)orth or (S)outh"
+        directions1 = "(N)orth or (S)outh."
     elif x == 3 and y == 1:
         print("Victory!")
         return True
-    print("You can travel:", directions1)
+    print("You can travel: ", "{:15}".format(directions1))
 
 def legal_moves(x, y, user_input):
     if x == 2 and y == 2 and (user_input == "n" or user_input == "e"):
-        print("Invalid direction!")
+        print("Not a valid direction!")
     elif (x == 1 and y == 1) and (user_input != "n"):
-        print("Invalid direction!")
+        print("Not a valid direction!")
     elif (x == 1 and y == 2) and (user_input == "w"):
-        print("Invalid direction")
+        print("Not a valid direction!")
     elif (x == 1 and y == 3) and (user_input == "n" or user_input == "w"):
-        print("Invalid direction")
+        print("Not a valid direction!")
     elif (x == 2 and y == 1) and ( user_input != "n"):
-        print("Invalid direction")
+        print("Not a valid direction!")
     elif (x == 2 and y == 3) and (user_input == "n" or user_input == "s"):
-        print("Invalid direction")
+        print("Not a valid direction!")
     elif (x==3 and y == 3) and (user_input == "n" or user_input == "e"):
-        print("Invaild direction")
+        print("Not a valid direction!")
     elif (x == 3 and y == 2) and (user_input == "w" or user_input == "e"):
-        print("Invalid direction")
+        print("Not a valid direction!") # breyta öllu í "not a valid"
     else:
         return False
 
