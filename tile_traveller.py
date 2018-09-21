@@ -38,11 +38,11 @@ def instructions(x, y):
     elif x == 3 and y == 3: 
         directions1 = "(W)est or (S)outh."
     elif x == 3 and y == 2:
-        directions1 = "(N)orth or (S)outh."
+        directions1 = "(S)outh or (N)orth."
     elif x == 3 and y == 1:
         print("Victory!")
         return True
-    print("You can travel: ", "{:15}".format(directions1))
+    print("You can travel: ", "{}".format(directions1))
 
 def legal_moves(x, y, user_input):
     if x == 2 and y == 2 and (user_input == "n" or user_input == "e"):
